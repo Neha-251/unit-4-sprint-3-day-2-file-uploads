@@ -1,7 +1,18 @@
 const app = require("./index");
 
-app.listen(2880, function (){
+const connect = require("./configs/db");
 
-    console.log("listening on port 2880");
+
+
+app.listen(2880, async function (){
+
+    try{
+        await connect();
+        console.log("listening on port 2880");
+    }
+    catch(err) {
+        console.log(err.message);
+    }
+   
 
 });
